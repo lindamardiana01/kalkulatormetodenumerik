@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Turunan Numerik</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kalkulator Turunan Numerik</h1>
+            <p>Metode Selisih Mundur dan Selisih Pusat</p>
+        </header>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="function">Fungsi f(x):</label>
+                <input type="text" id="function" placeholder="e.g., Math.pow(x,2) + Math.sin(x)" value="Math.pow(x,2) + Math.sin(x)">
+            </div>
+            <div class="input-group">
+                <label for="x-value">Nilai x:</label>
+                <input type="number" id="x-value" step="any" value="1">
+            </div>
+            <div class="input-group">
+                <label for="h-value">Nilai h (step size):</label>
+                <input type="number" id="h-value" step="0.001" min="0.0001" value="0.1">
+            </div>
+            <button id="calculate-btn">Hitung Turunan</button>
+        </div>
+
+        <div class="results-section">
+            <div class="method-card">
+                <h3>Selisih Mundur</h3>
+                <div class="result-box" id="backward-result"></div>
+                <div class="steps-box" id="backward-steps"></div>
+            </div>
+            <div class="method-card">
+                <h3>Selisih Pusat</h3>
+                <div class="result-box" id="central-result"></div>
+                <div class="steps-box" id="central-steps"></div>
+            </div>
+            <div class="comparison-card">
+                <h3>Perbandingan Hasil</h3>
+                <div id="comparison-result"></div>
+                <canvas id="function-chart"></canvas>
+                <canvas id="derivative-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="theory-section">
+            <h2>Penjelasan Metode</h2>
+            <div class="theory-card">
+                <h3>Metode Selisih Mundur</h3>
+                <p>Metode selisih mundur menghitung turunan dengan rumus:</p>
+                <p class="formula">f'(x) ≈ [f(x) - f(x-h)] / h</p>
+                <p>Metode ini menggunakan titik saat ini (x) dan titik sebelumnya (x-h).</p>
+            </div>
+            <div class="theory-card">
+                <h3>Metode Selisih Pusat</h3>
+                <p>Metode selisih pusat menghitung turunan dengan rumus:</p>
+                <p class="formula">f'(x) ≈ [f(x+h) - f(x-h)] / (2h)</p>
+                <p>Metode ini menggunakan titik sebelum (x-h) dan setelah (x+h), memberikan akurasi yang lebih baik.</p>
+            </div>
+        </div>
+
+        <div class="user-manual">
+            <h2>User Manual</h2>
+            <ol>
+                <li>Masukkan fungsi JavaScript valid dalam input "Fungsi f(x)" (contoh: Math.pow(x,2) + Math.sin(x))</li>
+                <li>Masukkan nilai x dimana turunan akan dihitung</li>
+                <li>Masukkan nilai h (step size) - semakin kecil semakin akurat</li>
+                <li>Klik tombol "Hitung Turunan"</li>
+                <li>Lihat hasil perhitungan dan grafik fungsi</li>
+                <li>Bandungkan hasil kedua metode</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
